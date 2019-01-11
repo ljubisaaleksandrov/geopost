@@ -1,0 +1,45 @@
+﻿@model PCdplaninskiVrhovi
+
+@if(Model != null)
+{
+    <table class="pcd-table">
+        @if(Model.Drzava != null && Model.Drzava.Any())
+        {
+            <tr>
+                <td>Država</td>
+                <td>
+                    @foreach(var drzava in Model.Drzava)
+                    {
+                        var zastava = (DataCountryFlag)drzava;
+                        <img class="pcd-flag-image" src="@zastava.FlagImage.Url" title="@zastava.CountryName.GetValue()" />
+                    }
+                </td>
+            </tr>
+        }
+        @if(Model.NadmorskaVisina != 0)
+        {
+            <tr>
+                <td>Nadmorska Visina</td>
+                <td>@Model.NadmorskaVisina m</td>
+            </tr>
+        }
+        @if(Model.PlaninskiVenac != null && !String.IsNullOrEmpty(Model.PlaninskiVenac.GetValue()))
+        {
+            <tr>
+                <td>Planinski Venac</td>
+                <td>@Model.PlaninskiVenac.GetValue()</td>
+            </tr>
+        }
+        @if(Model.PrviUsponDatum != null && (Model.PrviUsponAlpinisti != null && !String.IsNullOrEmpty(Model.PrviUsponAlpinisti.GetValue())))
+        {
+            <tr>
+                <td>Prvi Uspon</td>
+                <td>@Model.PrviUsponDatum.ToShortDateString()</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>@Model.PrviUsponAlpinisti.GetValue()</td>
+            </tr>
+        }
+    </table>
+}

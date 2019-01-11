@@ -1,0 +1,61 @@
+﻿body {
+}
+
+.cardSelected {
+    -webkit-box-shadow: 5px 5px 5px #66ff88;
+    -ms-box-shadow: 5px 5px 5px #66ff88;
+    box-shadow: 5px 5px 5px #66ff88;
+}
+
+.tctd {
+    width:100px;
+    height:132px;
+    float:left;
+    position:relative;
+    z-index:1;
+}
+
+.tcimg {
+    width:100px;
+    height:132px;
+    border-width: 1px;
+    border-style:solid; 
+    border-color:#d6ff50;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+
+    position: absolute;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;   
+
+}
+
+.tcimg :hover{
+    border-color: #26cf00;
+    z-index: 20;
+}
+
+.profilePhoto {
+    height: 70px; 
+    width: 70px
+}
+
+.profilePhoto:hover {
+    box-shadow: 0px 0px 5px #afeeee
+}
+
+.playerInfo {
+    position: absolute;
+    margin-top: 2px;
+    width: 220px; 
+    height: 80px; 
+    background-color:cornflowerblue;
+    color: white; 
+    z-index: 50;
+    border-radius: 10px;
+    display: none;
+    padding:20px
+}

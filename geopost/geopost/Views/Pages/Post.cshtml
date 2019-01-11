@@ -1,0 +1,14 @@
+﻿@model Umbraco.Web.PublishedContentModels.PagePost
+
+@{
+    Layout = "~/Views/Master.cshtml";
+}
+
+@{
+    var page = Model as PagePost;
+
+    <h1>@page.Heading.GetValue()</h1>
+    <h3>@page.Subheading.GetValue()</h3>
+
+    @Html.Raw(page.Body.GetValue())
+}

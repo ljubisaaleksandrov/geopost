@@ -1,0 +1,81 @@
+﻿@model Umbraco.Web.Models.RelatedLinks
+
+@if(Model != null && Model.Any()){
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+
+    <div class="related-pages">
+        <h2>Povezane stranice</h2>
+        @foreach (var link in Model){
+            IPublishedContent page = umbracoHelper.TypedContent(link.Id);
+            if (page.IsComposedOf(GeneralPresentation.ModelTypeAlias))
+            {
+                var presentationDetails = (IGeneralPresentation)page;
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <a class="related-page" href="@page.Url">
+                        @if(presentationDetails.PresentationImage != null)
+                        {
+                            <img src="@presentationDetails.PresentationImage.Url" />
+                        }
+                        @if(!String.IsNullOrEmpty(presentationDetails.PresentationTitle.GetValue()))
+                        {
+                            <h3>@presentationDetails.PresentationTitle.GetValue()</h3>
+                        }
+                        @if(!String.IsNullOrEmpty(presentationDetails.PresentationBody.GetValue()))
+                        {
+                            <span>@Html.Raw(presentationDetails.PresentationBody.GetValue())</span>
+                        }
+                    </a>
+                </div>
+            }
+        }
+    </div>
+
+    <div class="suggested-post-pages">
+        @foreach (var link in Model)
+        {
+            IPublishedContent page = umbracoHelper.TypedContent(link.Id);
+            if (page.IsComposedOf(GeneralPresentation.ModelTypeAlias))
+            {
+                var presentationDetails = (IGeneralPresentation)page;
+                bool isReadLater = false;
+                bool isPageLiked = false;
+
+                var isReadLaterImgSrc = "/Content/Images/Common Icons/read-later.svg";
+                var isNotReadLaterImgSrc = "/Content/Images/Common Icons/read-later-clock.svg";
+
+                var isPageLikedImgSrc = "/Content/Images/Common Icons/heart.svg";
+                var isNotPageLikedImgSrc = "/Content/Images/Common Icons/heart-shape-outline.svg";
+
+                <div class="suggested-page-container">
+                    <div class="suggested-page-cover">
+                        <a href="#" class="suggested-page-btn" data-action-type="read-later" data-current-state="@isReadLater" data-img-true-src="@isReadLaterImgSrc" data-img-false-src="@isNotReadLaterImgSrc" title="Read Later">
+                            <img src="@(isReadLater ? isReadLaterImgSrc : isNotReadLaterImgSrc)" />
+                        </a>
+                        <a href="@page.Url" class="suggested-page-btn" title="Read Now">
+                            <img src="~/Content/Images/Common Icons/reading.svg" />
+                        </a>
+                        <a href="#" class="suggested-page-btn" data-action-type="page-like" data-current-state="@isPageLiked" data-img-true-src="@isPageLikedImgSrc" data-img-false-src="@isNotPageLikedImgSrc" title="Like the page">
+                            <img src="@(isPageLiked ? isPageLikedImgSrc : isNotPageLikedImgSrc)" />
+                        </a>
+                    </div>
+                    <div class="suggested-page" href="@page.Url">
+                        @if (presentationDetails.PresentationImage != null)
+                        {
+                            <div class="suggested-page-img-container">
+                                <img src="@presentationDetails.PresentationImage.Url" />
+                            </div>
+                        }
+                        @if (!String.IsNullOrEmpty(presentationDetails.PresentationTitle.GetValue()))
+                        {
+                            <p>@presentationDetails.PresentationTitle.GetValue()</p>
+                        }
+                        @if (!String.IsNullOrEmpty(presentationDetails.PresentationBody.GetValue()))
+                        {
+                            <span>@Html.Raw(presentationDetails.PresentationBody.GetValue())</span>
+                        }
+                    </div>
+                </div>
+            }
+        }
+    </div>
+}

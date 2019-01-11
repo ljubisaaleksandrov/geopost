@@ -1,0 +1,41 @@
+﻿#HomeCarouselContainer {
+    width: 100%;
+    min-height: 330px;
+    margin-top: 50px;
+    margin-left: 100px;
+}
+
+.home-carousel-item {
+    width: 175px;
+    height: 270px;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -ms-border-radius: 6px;
+    border-radius: 6px;
+    border: 5px solid;
+    position: absolute;
+}
+
+.home-carousel-item.front {
+    text-align: center;
+    padding-top: 20px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.home-carousel-item.front > img{
+    width: 100%
+}
+
+.home-carousel-item.back {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    background-color: #eee;
+}
+

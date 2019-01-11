@@ -1,0 +1,22 @@
+﻿@model WidgetBodySection
+
+<div class="widget-body-section-container">
+    @if (Model.SectionImage == null)
+    {
+        @Model.SectionBody.GetValue()
+    }
+    else
+    {
+        <div class="col-md-6 col-xs-12 widget-body-section-body @(Model.IsSectionImageRight ? String.Empty : "right")">
+            @Html.Raw(Model.SectionBody.GetValue())
+        </div>
+        <div class="col-md-6 col-xs-12 widget-body-section-image">
+            @{
+                //var umbracoHelperView = new UmbracoHelper(UmbracoContext.Current);
+                //var mediaItem = umbracoHelperView.TypedMedia(Model.SectionImage.Id);
+
+                <img src="@Model.SectionImage.Url" />
+            }
+        </div>
+    }
+</div>

@@ -1,0 +1,376 @@
+﻿body {
+    padding-top: 100px !important;
+}
+
+footer {
+    width: 100%;
+    display: inline-block;
+}
+
+.geopost-navbar {
+    background-color: #f4f0f9;
+}
+
+.nav.navbar-nav{
+    width: 100%;
+}
+
+.navbar-brand {
+    height: auto;
+    padding-bottom: 8px;
+    padding-top: 10px;
+}
+
+.navbar-brand > img {
+    height: 50px !important;
+}
+
+.navbar-right{
+    float: right;
+}
+
+@media (min-width: 768px) {
+    .navbar-nav > li {
+        float: left;
+        margin-top: 8px;
+        margin-left: 5px;
+        border-top: 2px solid transparent;
+        border-bottom: 2px solid transparent;
+    }
+
+    .navbar-nav > li.navbar-btn-border:hover {
+        border-top: 2px solid #337ab7;
+        border-bottom: 2px solid #337ab7;
+    }
+
+    .navbar-nav > li > a{
+        font-size: 16px;
+    }
+
+    .navbar-nav > li > a:hover {
+        background-color: transparent;
+    }
+
+    .navbar-read-later-notification {
+        position: absolute;
+        display: inline-block;
+        right: 8px;
+        bottom: 8px;
+        background-color: purple;
+        color: white;
+        padding: 2px 5px 0px 5px;
+    }
+}
+
+.icon-bar {
+    background-color: #883388;
+}
+
+.breadcrumbs{
+    margin-bottom: 10px 0;
+    font-weight: bold;
+}
+
+.cookie-container {
+    position: fixed;
+    color: white;
+    background-color: #883388;
+    border-top: 2px solid black;
+    padding: 15px 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.cookie-container p{
+    display: inline-block;
+}
+
+.page-main-content {
+    padding-left: 0;
+    text-align: justify;
+}
+
+@media (min-width: 768px) {
+    .related-pages {
+        display: inline-block;
+        width: 100%;
+        margin-top: 30px;
+    }
+}
+
+.related-page {
+    height: auto;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.related-page > img{
+    width: 100%
+}
+
+.related-page > h3 {
+    margin-top: 15px;
+}
+
+.widget-body-section-container {
+    margin: 10px 0;
+    display: inline-block;
+    width: 100%;
+    height: auto;
+}
+
+.widget-body-section-body {
+    padding-left: 0;
+}
+
+.widget-body-section-body.right {
+    padding-left: 15px;
+    padding-right: 0;
+    float: right;
+}
+
+.widget-body-section-image > img{
+    width: 100%;
+}
+
+
+
+/*#region Social Sharing*/
+.page-social-shaing{
+    position: fixed;
+    right: 5px;
+}
+
+.page-social-shaing-button {
+    padding: 10px;
+    display: inline-block;
+    height: 52px;
+    width: 52px;
+    margin-bottom: 3px;
+}
+
+#FBShare {
+    background-color: blue !important;
+}
+
+#LNShare {
+    background-color: #0073b1 !important;
+}
+
+#EMShare {
+    background-color: red !important;
+}
+
+#TWShare {
+    background-color: #1da1f2 !important;
+}
+
+/*#endregion*/
+
+
+/*#region post categories*/
+
+.page-post {
+    padding-left: 0 !important;
+    padding-top: 20px;
+    text-align: left;
+    border-top: 1px solid blue;
+    height: 360px;
+}
+
+.page-post-inner-container{
+    position:absolute;
+    padding: 8px;
+}
+
+.page-post:hover .page-post-inner-container {
+    z-index: 2;
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 6px 6px 5px rgba(0,0,0,.4);
+    box-shadow: 2px 2px 4px rgba(0,0,0,.13);
+}
+
+.page-post-image-container {
+    width: 100%;
+    height: 170px;
+    overflow: hidden;
+    align-content: center;
+}
+
+.page-post a:hover{
+    text-decoration: none;
+}
+
+.page-post img {
+    width: 100%;
+}
+
+.page-post span.page-post-presentation-body {
+    height: 40px;
+    overflow: hidden;
+    display: inline-block;
+    font-family: "Open Sans", Arial, Helvetica;
+    text-overflow: ellipsis;
+    color: #036;
+}
+
+.page-post:hover span.page-post-presentation-body {
+    height: auto;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.page-post-stats-container{
+    margin-top: 10px;
+}
+
+.page-post-views,
+.page-post-comments {
+    color: #666;
+    font-weight: bold;
+    display: inline-block;
+    display: inline-flex;
+    font-size: 16px;
+}
+
+.page-post-views:before,
+.page-post-comments:before {
+    margin: 3px;
+}
+
+.page-post-comments {
+    margin-left: 30px;
+}
+
+.page-post-tags{
+    margin-top:8px;
+}
+
+.page-post-tag {
+    display: none;
+    padding: 6px 12px;
+    background-color: #707099;
+    color: white;
+}
+
+.page-post-tag:hover {
+    background-color: #555588;
+    color: white;
+}
+
+.page-post:hover .page-post-tag {
+    display: inline-block;
+}
+
+/*#endregion*/
+
+
+/*#region PCD*/
+
+.pcd-table {
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+.pcd-table td {
+    vertical-align: top;
+}
+
+.pcd-table td:first-child {
+    text-align: right;
+    padding-right: 10px;
+}
+
+.pcd-flag-image {
+    height: 48px;
+    margin-top: -4px;
+}
+    
+/*#endregion*/
+
+/*#region suggested post pages*/
+
+.suggested-post-pages {
+    position: fixed;
+    right: 5px;
+    overflow: hidden;
+}
+
+.suggested-page-container {
+    float: left;
+    margin-bottom: 6px;
+    height: 90px;
+    overflow: hidden;
+    display: none;
+}
+
+.suggested-page-img-container {
+    height: 90px;
+    display: inline-block;
+    max-width: 120px;
+    float: left;
+    margin-right: 10px;
+}
+
+.suggested-page-img-container img {
+    width: 100%;
+}
+
+.suggested-page-container p {
+    font-weight: bold;
+    margin-bottom: 2px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 18px;
+}
+
+.suggested-page-container span{
+    height: 30px;
+}
+
+.suggested-page-cover {
+    background-color: #f4f0f9;
+    height: 90px;
+    width: 100%;
+    position: absolute;
+    display: none;
+}
+
+.suggested-page-container:hover .suggested-page-cover {
+    display: inline-block;
+}
+
+.suggested-page-btn img {
+    width: 70px;
+    margin: 10px 20px;
+}
+
+.suggested-page-btn:hover{
+    text-decoration: none;
+}
+
+.suggested-page-btn.listing-page {
+    position: absolute;
+    right: 8px;
+    opacity: 0.7;
+    display: none;
+}
+
+.suggested-page-btn.listing-page > img{
+    margin: 2px;
+}
+.page-post:hover .suggested-page-btn.listing-page {
+    display: inline-block;
+}
+
+.suggested-page-btn.listing-page:hover {
+    opacity: 1;
+}
+
+/*#endregion*/

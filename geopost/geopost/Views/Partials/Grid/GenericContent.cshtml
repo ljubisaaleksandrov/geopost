@@ -1,0 +1,100 @@
+﻿@using geopost.Models;
+
+@inherits UmbracoViewPage<GridLayout>
+
+
+@* Render all available sections *@
+@if (Model != null && Model.Sections != null)
+{
+    foreach (var s in Model.Sections)
+    {
+        foreach (var row in s.Rows)
+        {
+            if (row.Name == "Showcase 3 columns" || row.Name == "Showcase 4 mixed")
+            {
+                @RenderShowcaseRow(row)
+            }
+            else if (row.Name == "TwoColumnText")
+            {
+                @RenderTwoColumnRow(row)
+            }
+            else if (row.Name == "Spotlight")
+            {
+                @RenderSpotlight(row)
+            }
+            else
+            {
+                @RenderRow(row)
+            }
+        }
+    }
+}
+
+@helper RenderRow(GridRow row)
+{
+    foreach (var area in row.Areas)
+    {
+        foreach (var control in area.Controls)
+        {
+            if (control != null && control.editor != null && control.editor.view != null)
+            {
+                <text>@Html.Partial("grid/editors/base", (object)control)</text>
+            }
+        }
+    }
+}
+
+@helper RenderTwoColumnRow(GridRow row)
+{
+    <section class="venue-accom">
+        <ul class="venue-accom__content">
+            @foreach (var area in row.Areas)
+            {
+                <li>
+                    @foreach (var control in area.Controls)
+                    {
+                        if (control != null && control.editor != null && control.editor.view != null)
+                        {
+                            <text>@Html.Partial("grid/editors/base", (object)control)</text>
+                        }
+                    }
+                </li>
+            }
+        </ul>
+    </section>
+}
+@helper RenderSpotlight(GridRow row)
+{
+    <div class="impact-item align-left impact-item-stat">
+        @foreach (var area in row.Areas)
+        {
+
+            foreach (var control in area.Controls)
+            {
+                if (control != null && control.editor != null && control.editor.view != null)
+                {
+                    <text>@Html.Partial("grid/editors/base", (object)control)</text>
+                }
+            }
+
+        }
+    </div>
+}
+
+@helper RenderShowcaseRow(GridRow row)
+{
+    <div class="row wide">
+        @foreach (var area in row.Areas)
+        {
+            <div class="col-lg-@area.Size col-md-@(area.Size*2) col-sm-12 order-lg-1 order-md-2 column">
+                @foreach (var control in area.Controls)
+                {
+                    if (control != null && control.editor != null && control.editor.view != null)
+                    {
+                        <text>@Html.Partial("grid/editors/base", (object)control)</text>
+                    }
+                }
+            </div>
+        }
+    </div>
+}

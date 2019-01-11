@@ -1,0 +1,58 @@
+﻿@model HeaderViewModel
+
+@if (Model != null && Model.SiteSettings != null)
+{
+    <div class="navbar navbar-fixed-top geopost-navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/@HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()" class="navbar-brand">
+                            <img src="@Model.SiteSettings.Logo.Url" />
+                        </a>
+                    </li>
+                    <li class="navbar-btn-border">@Html.ActionLink("About", "About", "Home")</li>
+                    <li class="navbar-btn-border">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li class="navbar-btn-border">@Html.ActionLink("User", "Register", "Users")</li>
+                    <li class="navbar-right">
+                        <a href="#" class="navbar-brand">
+                            <img class="read-later-btn" src="~/Content/Images/Common Icons/read-later.svg" />
+                            <span class="navbar-read-later-notification">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    if (Model.Breadcrumbs != null && Model.Breadcrumbs.Any())
+    {
+        <div class="breadcrumbs">
+            @foreach(var item in Model.Breadcrumbs)
+            {
+                <a href="@item.Url">@item.NavigationTitle.GetValue()</a>
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            }
+        </div>
+    }
+
+    @*<div class="cookie-container">
+        <span>
+            @Html.Raw(Model.SiteSettings.CookieShortCopy.GetValue())
+        </span>
+
+        <a href="#" class="btn btn-default cookie-agree"><span class="icon-icon-arrow-right"></span>@Model.SiteSettings.CookieAgreeButtonText.GetValue()</a>
+        <a href="#" class="btn btn-default cookie-disagree"><span class="icon-icon-arrow-right"></span>@Model.SiteSettings.CookieDisagreeButtonText.GetValue()</a>
+
+        <a href="@Model.SiteSettings.CookieReadMoreLink.FirstOrDefault().Link" class="btn btn-default">@Model.SiteSettings.CookieReadModeButtonText.GetValue()</a>
+    </div>*@
+
+}
