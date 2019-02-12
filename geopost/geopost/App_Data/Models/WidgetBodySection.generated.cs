@@ -85,9 +85,9 @@ namespace Umbraco.Web.PublishedContentModels
 		/// Section Subheadline
 		///</summary>
 		[ImplementPropertyType("sectionSubheadline")]
-		public Our.Umbraco.Vorto.Models.VortoValue<IHtmlString> SectionSubheadline
+		public Our.Umbraco.Vorto.Models.VortoValue<string> SectionSubheadline
 		{
-			get { return this.GetPropertyValue<Our.Umbraco.Vorto.Models.VortoValue<IHtmlString>>("sectionSubheadline"); }
+			get { return this.GetPropertyValue<Our.Umbraco.Vorto.Models.VortoValue<string>>("sectionSubheadline"); }
 		}
 	}
 }

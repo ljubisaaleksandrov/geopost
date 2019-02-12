@@ -21,8 +21,16 @@
                     </li>
                     <li class="navbar-btn-border">@Html.ActionLink("About", "About", "Home")</li>
                     <li class="navbar-btn-border">@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li class="navbar-btn-border">@Html.ActionLink("User", "Register", "Users")</li>
-                    <li class="navbar-right">
+                    @*<li class="navbar-btn-border">@Html.ActionLink("User", "Register", "Users")</li>*@
+                    <li class="navbar-right navbar-custom-action-btn" data-action="user-login">
+                        <a href="@(User.Identity.IsAuthenticated ? "#" : Model.SiteSettings.SiteLoginPage.FirstOrDefault().Link)" class="navbar-brand">
+                            <img class="read-later-btn" src="~/Content/Images/Common Icons/boy.png" />
+                            <span class="navbar-user-login">
+                                <img class="img-checked" src="~/Content/Images/Common Icons/checked.png" />
+                            </span>
+                        </a>
+                    </li>
+                    <li class="navbar-right navbar-custom-action-btn" data-action="read-later">
                         <a href="#" class="navbar-brand">
                             <img class="read-later-btn" src="~/Content/Images/Common Icons/read-later.svg" />
                             <span class="navbar-read-later-notification">0</span>
@@ -30,6 +38,7 @@
                     </li>
                 </ul>
             </div>
+            <div class="login-form-container"></div>
         </div>
     </div>
 

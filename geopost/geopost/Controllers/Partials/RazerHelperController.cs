@@ -12,7 +12,7 @@ namespace geopost.Controllers.Partials
             var model = new HeaderViewModel()
             {
                 SiteSettings = SettingsHelper.GetSiteSettings(),
-                Breadcrumbs = BreadcrumbsHelper.InitBreadcrumb()
+                Breadcrumbs = BreadcrumbsHelper.InitBreadcrumb(),
             };
 
             return PartialView("~/Views/Shared/_Header.cshtml", model);

@@ -1,0 +1,17 @@
+﻿@using geopost.Domain.Models.UmbracoIdentity
+@model Umbraco.Web.PublishedContentModels.PageLogin
+
+@{
+    Layout = "~/Views/Master.cshtml";
+}
+
+@{
+    var page = Model as PageLogin;
+
+    <div class="authentication-form-container">
+        @Html.Partial("~/Views/UmbracoIdentityAccount/Login.cshtml", new LoginViewModel())
+    </div>
+    <div class="authentication-form-container">
+        @Html.Partial("~/Views/UmbracoIdentityAccount/Register.cshtml", new RegisterViewModel())
+    </div>
+}

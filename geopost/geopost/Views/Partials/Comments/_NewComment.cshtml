@@ -1,0 +1,67 @@
+﻿<div class="new-comment-container">
+    <h2>Ostavite komentar</h2>
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <p class="required">Vaša e-mail adresa neće biti prikazana</p>
+    }
+
+    @using (Html.BeginForm("CreateComment", "Comments", FormMethod.Post, new { id = "CreateNewComment", style = "margin-left: -12px;" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="control-group">
+
+            <input type="hidden" name="PageId" value="@UmbracoContext.Current.PageId" />
+
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <div class="driver-ride-field driver-ride-field-long mandatory col-md-12">
+                    @*<label>@Model.SiteLabels.RideLocationFrom</label>*@
+                    <label>Username* </label>
+                    <div class="ui-widget">
+                        @*@Html.TextBoxFor(model => model.RideCreationViewModel.FromPlace, new { @class = "input-autocomplete form-control driver-ride-field-place-from" })*@
+                        @Html.TextBox("Username", null, new { @class = "form-control", @style = "border-radius:0;" })
+                        <ul class="autocomplete autocomplete-place-from"></ul>
+                    </div>
+                </div>
+                <br />
+                <div class="driver-ride-field driver-ride-field-long mandatory col-md-12">
+                    @*<label>@Model.SiteLabels.RideLocationFrom</label>*@
+                    <label>Email *</label>
+                    <div class="ui-widget">
+                        @*@Html.TextBoxFor(model => model.RideCreationViewModel.FromPlace, new { @class = "input-autocomplete form-control driver-ride-field-place-from" })*@
+                        @Html.TextBox("Email", null, new { @class = "form-control", @style = "border-radius:0;" })
+                        <ul class="autocomplete autocomplete-place-from"></ul>
+                    </div>
+                </div>
+            }
+
+            <div class="driver-ride-field driver-ride-field-textarea optional col-md-12 col-sm-12 col-xs-12">
+                <label>Comment *</label>
+                @Html.TextArea("Message", null, new { @class = "", @rows = "3", @style = "max-width: 100%; width: 100%;" })
+            </div>
+
+            <div id="RecaptchaField" style="display: inline-block; margin: 15px;">
+
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12 driver-ride-create-ride">
+                <span class="validation-errors"></span>
+                <input type="button" style="border-radius:0" class="btn btn-primary driver-ride-create-ride-btn" id="SumbitComment" value="Dodaj komentar" />
+            </div>
+        </div>
+    }
+
+
+    @*<script type="text/javascript">
+                var onloadCallback = function () {
+                    grecaptcha.render('RecaptchaField', {
+                        'sitekey': '6LcoFocUAAAAAP5D9M4UdOT_bbQ9X9KAYuKt8Ey_'
+                    });
+                };
+    </script>
+
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+            async defer>
+    </script>*@
+
+</div>

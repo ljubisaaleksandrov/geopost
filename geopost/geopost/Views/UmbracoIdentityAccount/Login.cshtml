@@ -1,9 +1,11 @@
 @using System.Web.Mvc.Html
 @using ClientDependency.Core.Mvc
-@using geopost.Controllers.Identity
+@using geopost.Domain.Models.UmbracoIdentity
 @using Umbraco.Web
 @using Umbraco.Web.Models
 @using Umbraco.Web.Controllers
+
+@model LoginViewModel
 
 @{
     var loginModel = new LoginModel();
@@ -16,34 +18,59 @@
         .RequiresJs("~/scripts/foundation.form.validation.js", 201);
 }
 
-<h4>Standard login.</h4>
+<div class="col-md-6 col-sm-6 col-xs-12 sign-in-wrapper">
+    <div class="col-xs-12">
+        <h4>Standard login.</h4>
 
-@using (Html.BeginUmbracoForm<UmbracoIdentityAccountController>("HandleLogin", null, new { @class = "foundationForm" }))
-{
-    <fieldset>
-        <legend>Login</legend>
-
-        @Html.ValidationSummary("loginModel", true)
-
-        <div class="row">
-            <div class="small-12 columns">
-                <label for="@Html.IdFor(m => loginModel.Username)">
-                    @Html.DisplayNameFor(m => loginModel.Username)
-                    @Html.TextBoxFor(m => loginModel.Username)
-                </label>
-                @Html.ValidationMessageFor(m => loginModel.Username)
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "login-form", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <h4>Use a local account to log in.</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="small-12 columns">
-                <label for="@Html.IdFor(m => loginModel.Password)">
-                    @Html.DisplayNameFor(m => loginModel.Password)
-                    @Html.PasswordFor(m => loginModel.Password)
-                </label>
-                @Html.ValidationMessageFor(m => loginModel.Password)
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="checkbox">
+                        @Html.CheckBoxFor(m => m.RememberMe)
+                        @Html.LabelFor(m => m.RememberMe)
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Log in" class="col-sm-2 btn signup"  id="UserLogin" />
+                </div>
+            </div>
+            <p>
+                @Html.ActionLink("Register as a new user", "Register", "Users", null, new { @id = "UserRegister" })
+            </p>
+            @* Enable this once you have account confirmation enabled for password reset functionality
+            <p>
+                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+            </p>
+            *@
+        }
 
-        <button>Login</button>
-    </fieldset>
-}
+        @*
+        <div class="col-md-4">
+            <section id="socialLoginForm">
+                @Html.Partial("~/Views/Partials/Users/_ExternalLoginsListPartial.cshtml", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>
+        </div>
+        *@
+    </div>
+</div>

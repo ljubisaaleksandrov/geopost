@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "geopost", "geopost\geopost.csproj", "{E3A21BCB-D4A5-4F34-BC11-F6F77003AB8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "geopost.Business", "geopost.Business\geopost.Business.csproj", "{D5D50AFD-573A-44BC-938B-C191D41B0BFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "geopost.Services", "geopost.Business\geopost.Services.csproj", "{D5D50AFD-573A-44BC-938B-C191D41B0BFD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "geopost.Domain", "geopost.Domain\geopost.Domain.csproj", "{D1D516D4-BE3F-4730-88E2-8A616594A66F}"
 EndProject

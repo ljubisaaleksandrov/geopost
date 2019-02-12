@@ -23,7 +23,12 @@ namespace geopost
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/custom/home_carousel.js",
-                      "~/Scripts/custom/suggested_pages.js"));
+                      "~/Scripts/custom/suggested_pages.js",
+                      "~/Scripts/custom/navbar_custom_action.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/comments").Include(
+                        "~/Scripts/custom/comments.js"));
+
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/css/bootstrap.css",

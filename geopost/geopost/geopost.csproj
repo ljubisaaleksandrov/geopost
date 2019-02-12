@@ -46,6 +46,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=4.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.4.2.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
@@ -163,6 +172,18 @@
     </Reference>
     <Reference Include="Semver, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\semver.1.1.2\lib\net451\Semver.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector, Version=4.4.3.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.4.4.3\lib\net45\SimpleInjector.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.Web, Version=4.4.3.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.Integration.Web.4.4.3\lib\net40\SimpleInjector.Integration.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.Web.Mvc, Version=4.4.3.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.Integration.Web.Mvc.4.4.3\lib\net40\SimpleInjector.Integration.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.WebApi, Version=4.4.3.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.Integration.WebApi.4.4.3\lib\net45\SimpleInjector.Integration.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="SQLCE4Umbraco, Version=1.0.6879.21988, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.4\lib\net45\SQLCE4Umbraco.dll</HintPath>
@@ -336,10 +357,12 @@
     <Compile Include="App_Data\Models\Image.generated.cs" />
     <Compile Include="App_Data\Models\Member.generated.cs" />
     <Compile Include="App_Data\Models\PageHome.generated.cs" />
+    <Compile Include="App_Data\Models\PageLogin.generated.cs" />
     <Compile Include="App_Data\Models\PagePost.generated.cs" />
     <Compile Include="App_Data\Models\PagePostCategory.generated.cs" />
     <Compile Include="App_Data\Models\PCdplaninskiVrhovi.generated.cs" />
     <Compile Include="App_Data\Models\WidgetBodySection.generated.cs" />
+    <Compile Include="App_Start\AutoMapperWebConfigurationHelper.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\GeopostEventHandler.cs" />
@@ -348,6 +371,7 @@
     <Compile Include="App_Start\UmbracoIdentityStartup.cs" />
     <Compile Include="Controllers\Identity\UsersController.cs" />
     <Compile Include="Controllers\Pages\PostCategoryController.cs" />
+    <Compile Include="Controllers\Pages\LoginController.cs" />
     <Compile Include="Controllers\Pages\PostController.cs" />
     <Compile Include="Controllers\Pages\HomeController.cs" />
     <Compile Include="Controllers\Partials\CommentsController.cs" />
@@ -372,6 +396,7 @@
     <Compile Include="Models\UmbracoIdentity\UmbracoApplicationMember.cs" />
     <Compile Include="Models\UmbracoIdentity\UmbracoApplicationRole.cs" />
     <Compile Include="Models\UmbracoIdentity\UserPasswordModel.cs" />
+    <Compile Include="PostImporterController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -418,6 +443,9 @@
     <Content Include="Content\Images\Carousel\arrow-red.jpg" />
     <Content Include="Content\Images\Carousel\cardBack.jpg" />
     <Content Include="Content\Images\Carousel\tablic.jpg" />
+    <Content Include="Content\Images\Common Icons\boy.png" />
+    <Content Include="Content\Images\Common Icons\checked.png" />
+    <Content Include="Content\Images\Common Icons\girl.png" />
     <Content Include="Content\Images\Common Icons\read-later-clock.svg" />
     <Content Include="Content\Images\Common Icons\read-later.svg" />
     <Content Include="Content\Images\Common Icons\heart-shape-outline.svg" />
@@ -463,7 +491,9 @@
     <Content Include="App_Plugins\DocTypeGridEditor\Render\DocTypeGridEditor.cshtml" />
     <Content Include="App_Plugins\DocTypeGridEditor\package.manifest" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\custom\comments.js" />
     <Content Include="Scripts\custom\home_carousel.js" />
+    <Content Include="Scripts\custom\navbar_custom_action.js" />
     <Content Include="Scripts\custom\suggested_pages.js" />
     <Content Include="Scripts\foundation.form.validation.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -529,6 +559,8 @@
     <Content Include="Views\UmbracoIdentityAccount\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\UmbracoIdentityAccount\AccountLayout.cshtml" />
     <Content Include="Views\UmbracoIdentityAccount\Account.cshtml" />
+    <Content Include="Views\Pages\Login.cshtml" />
+    <Content Include="Views\Partials\Comments\_NewComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Partials\Grid\Placeholders\" />
@@ -551,6 +583,10 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\geopost.Business\geopost.Services.csproj">
+      <Project>{d5d50afd-573a-44bc-938b-c191d41b0bfd}</Project>
+      <Name>geopost.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\geopost.Domain\geopost.Domain.csproj">
       <Project>{d1d516d4-be3f-4730-88e2-8a616594a66f}</Project>
       <Name>geopost.Domain</Name>

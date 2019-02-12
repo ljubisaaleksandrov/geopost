@@ -47,18 +47,39 @@ footer {
         font-size: 16px;
     }
 
-    .navbar-nav > li > a:hover {
+    .navbar-nav > li > a:hover,
+    .navbar-nav > li > a:focus{
         background-color: transparent;
     }
 
+    .navbar-user-login,
     .navbar-read-later-notification {
         position: absolute;
         display: inline-block;
         right: 8px;
         bottom: 8px;
-        background-color: purple;
         color: white;
         padding: 2px 5px 0px 5px;
+    }
+
+    .navbar-read-later-notification {
+        background-color: purple;
+    }
+
+    .navbar-user-login {
+        margin-right: -8px;
+    }
+
+    .navbar-user-login > img {
+        height: 23px;
+    }
+
+    .login-form-container {
+        height: 100px;
+        width: 200px;
+        background-color: yellow;
+        position: absolute;
+        display: none;
     }
 }
 

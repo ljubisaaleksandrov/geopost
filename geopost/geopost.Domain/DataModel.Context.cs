@@ -13,10 +13,10 @@ namespace geopost.Domain
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Default_GPEntities : DbContext
+    public partial class DataContext : DbContext
     {
-        public Default_GPEntities()
-            : base("name=Default_GPEntities")
+        public DataContext()
+            : base("name=DataContext")
         {
         }
     
@@ -29,5 +29,6 @@ namespace geopost.Domain
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
     }
 }

@@ -118,6 +118,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Site Login Page
+		///</summary>
+		[ImplementPropertyType("siteLoginPage")]
+		public Umbraco.Web.Models.RelatedLinks SiteLoginPage
+		{
+			get { return this.GetPropertyValue<Umbraco.Web.Models.RelatedLinks>("siteLoginPage"); }
+		}
+
+		///<summary>
 		/// Site Search Page
 		///</summary>
 		[ImplementPropertyType("siteSearchPage")]
